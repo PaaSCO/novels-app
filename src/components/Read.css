@@ -1,0 +1,56 @@
+.read {
+  background-color: rgb(223, 223, 195); 
+ padding:2rem
+  
+  
+}
+.list-of-chapters{
+   background-color: rgb(255, 255, 255);  
+   color: black;  
+    margin-top: 5px;
+}
+.list-of-chapters >a{
+  color: black;
+}
+.reading {
+  background-color: rgb(233, 232, 216); 
+  opacity: 0.9;
+  color: brown;
+
+ 
+}
+.reading-title {
+  position: relative;
+  top: 3rem;
+  bottom: 1.5rem;
+  text-align: center;
+  font-size: 38px;
+  font-family: "Raleway";
+  color: #000000;
+}
+.reading-content {
+  position: relative;
+  top: 3rem;
+  bottom: 1.5rem;
+  color: rgb(0, 0, 0) !important;
+  font-size: 22px !important;
+  letter-spacing: 0.5px;
+  line-height: 2.8rem;
+  font-family: "Lato";
+  font-weight: 600;
+}
+
+
+.underline-img > img{
+ display: block;
+  margin-left: auto;
+  margin-right: auto; 
+  width: 50%;
+  height: 12rem;
+  opacity: 0.8;
+  
+}
+.read-screen{
+background-image:url('../assets/images/back18.jpg');
+  border-radius: 40px;
+}
