@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
-// TODO: Replace the following with your app's Firebase project configuration
+// TODO: Replace the following with your app's Firebase project configuration//
 const firebaseConfig = {
   //...
    apiKey: "AIzaSyDVYC1Kx5QzG6JEyD7fDutuBPNbSXUdCio",

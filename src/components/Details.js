@@ -40,8 +40,7 @@ function Details({ novels, id, id2 }) {
                  <div class="wsk-cp-product">
                      <div class="wsk-cp-img">
                          <img src={novel.image} alt="Product" class="img-responsive" />
-                     </div>
-                 
+                     </div>                 
          
                </div>              
                    
@@ -126,10 +125,22 @@ function Details({ novels, id, id2 }) {
   
 }
 const NovelStyled = styled.div`
-background-color:#ffff;
+background-color:${props => props.theme.homeBack};
+
+.wrapper {
+  background:${props=>props.theme.cardBack};
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  position: relative;
+  margin: 20px 20px;
+  max-width: 120rem;
+  min-width: fit-content;
+  height: 34rem;
+}
 
 .wsk-cp-product {
-  background: #fff;
+  background: ${props=>props.theme.homeBack};
   padding: 15px;
   border-radius: 6px;
   box-shadow:none!important;
@@ -137,7 +148,9 @@ background-color:#ffff;
   margin: 20px auto;
 }
 
-
+.t-details{
+  color: ${props=>props.theme.textColor};
+}
 
 h4,h5,h6{
   cursor:pointer;
@@ -145,6 +158,7 @@ h4,h5,h6{
 .below-title{
   position:relative;
   top:2rem;
+  color: ${props=>props.theme.textColor};
 }
 .right{
 .author{
@@ -188,8 +202,8 @@ h4,h5,h6{
    
   padding: 12px 30px;
   border: 1px solid #313131;
-  background: #212121;
-  color: #fff;
+  background: ${props=>props.theme.categoryBack};
+  color:  ${props=>props.theme.textColor};
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   border-radius: 27px;
   transition: all 0.05s ease-in-out;
@@ -211,7 +225,28 @@ h4,h5,h6{
    }
 }
 
-
+@media screen and (max-width: 770px) {
+  .wsk-cp-img{
+ position: absolute;
+   left:99px;
+  }
+ .right{
+   position: absolute;
+   left:5rem;
+ }
+ .left{
+   position: absolute;
+   left:-89px;
+ }
+.card-footer .category{
+   position: relative;
+   top:16rem;
+   left: -25px;
+ }
+ .wrapper {
+    box-shadow:none;
+ }
+}
 `;
 
 export default Details;

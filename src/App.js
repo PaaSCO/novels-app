@@ -27,13 +27,26 @@ const LightTheme = {
   backgroundColor: 'white',
   navBack: 'rgb(255, 244, 244)',
   logoColor: '#a30474',
+  cardBack: 'white',
+  homeBack: '#f0ede4',
+  cardShadow: '0 1px 3px rgba(190, 47, 47, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+  footerBack: 'footer.jpg',
+  categoryBack: '#212121',
+  slidderBack: 'linear-gradient(#FDDEFD, lightGrey)',
+
 }
 
 const DarkTheme = {
   textColor: '#f0ede4',
-  backgroundColor: '#121212',
-  navBack: 'black',
+  backgroundColor: '#000000',
+  navBack: '#121212',
   logoColor: 'white',
+  cardBack: '#000000',
+  homeBack: '#121212',
+  cardShadow: ' 0 19px 38px rgba(155, 154, 154, 0.3), 0 15px 12px rgba(226, 216, 216, 0.22)',
+  footerBack: 'footer3.jpg',
+  categoryBack: '#212121',
+  slidderBack: 'linear-gradient(Grey,#212121 )',
 }
 const themes = {
   light: LightTheme,
@@ -73,7 +86,7 @@ transition: all .5s ease-in-out;
 
 
 function App() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
   const [search, setSearch] = useState('');
 	const [display, setDisplay] = useState();
 
@@ -91,6 +104,7 @@ function App() {
   
   return (
     <ThemeProvider theme={themes[theme]}>
+      <AppStyled>
     <div className="App">
      
         <NavStyled>
@@ -139,11 +153,10 @@ function App() {
             
             
        
-         <Route path="/genre" element={<GenreView />} />
-            
-            <Route path="details/:id" element={<NovelDetails />} />
+            <Route path="/genre" element={<GenreView theme={theme} setTheme={setTheme}/>} />            
+            <Route path="details/:id" element={<NovelDetails theme={theme}  />} />
             <Route path="read/:id/:id2/:pageNum" element={<Read />} />
-            <Route path="search/:value" element={<SearchNovel />} />
+            <Route path="search/:value" element={<SearchNovel theme={theme} />} />
             
 
               
@@ -160,13 +173,18 @@ function App() {
         </div>
       
       </div>
-      <Footer/>
+          <Footer theme={theme} setTheme={setTheme}/>
       
      
    
-      </div>
+        </div>
+        </AppStyled>
       </ThemeProvider>
   );
 }
+const AppStyled = styled.div`
+background-color :${props=>props.theme.backgroundColor};
+
+`;
 
 export default App;

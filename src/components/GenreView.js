@@ -5,6 +5,7 @@ import Genre from './Genre';
 import Novel from './Novel';
 import './Genre.css';
 import useFetchNovels from './useFetchNovels';
+import styled from 'styled-components';
 
 function GenreView() {
 
@@ -71,8 +72,9 @@ const uniquegenres = uniq(genres, 'genre');
 
  
  
-  return <div className='genreview'>
-      
+  return  <GenreViewStyled>
+  <div className='genreview'>
+   
     <h5>Genres</h5>
         
     <Genre genres={uniquegenres2}  displayGenre={displayGenre} displayAll={displayAll} />
@@ -81,13 +83,37 @@ const uniquegenres = uniq(genres, 'genre');
 
     <br /> <br /> <br /> <br />
     
-    <h6>{gnovels.length} Result(s) for <b>{ gname}</b> genres</h6><br /> <br />
-
-   
+  
+     <h5><span>{gnovels.length}</span> result(s) for {gname}</h5>
         
-    <Novel novels={gnovels}/>
-      
+    <Novel novels={gnovels}/>    
   </div>;
+   </GenreViewStyled>   
 }
+
+const GenreViewStyled = styled.div`
+
+   h5{
+   
+     text-align:center;
+     color:${props=>props.theme.textColor};
+
+     span{
+       color:red;
+       font-size:1.5rem;
+     }
+   }
+
+ .genreview{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.genreview{
+  background-color: ${props=>props.theme.backgroundColor};
+}
+
+
+
+`;
 
 export default GenreView;

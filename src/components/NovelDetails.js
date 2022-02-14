@@ -9,10 +9,11 @@ import Novel from './Novel';
 import Title from './Title';
 
 
-function NovelDetails() {
+function NovelDetails({theme}) {
   
     const { novels } = useFetchNovels('novel');
-      const { id,id2 } = useParams();
+    const { id, id2 } = useParams();
+   
     
 
 
@@ -27,11 +28,11 @@ function NovelDetails() {
 
     
                   
-            <Details novels={details} id={`${id}`} id2={`${id2}`}/>
+            <Details novels={details} id={`${id}`} id2={`${id2}`} theme={theme}/>
 
             <br /> <br /> <br />
             <div className='details-tab'>
-                 <DetailsTab novels={details} id={`${id}`} />
+                <DetailsTab novels={details} id={`${id}`} theme={theme}/>
             </div>
            
             
@@ -53,7 +54,7 @@ const DetailsStyled = styled.div`
 .novel-details{
     position:relative;
     top:10rem;
-     background-color: #ffffff;
+     background-color: ${props=>props.theme.homeBack};
 
 
      .details-tab{

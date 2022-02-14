@@ -34,22 +34,38 @@ function SearchNovel() {
     
     return <div className='search'>
         <SearchStyled>
+             <h5><span>{mySearchNovels.length}</span> result(s) for "{value}"</h5>
            
-            <h5 className='results'><span>{mySearchNovels.length}</span> result(s) for "{value}"</h5><br/>
-            <Novel novels={mySearchNovels} />
+        <div className='results-item'>
+         
+          <Novel novels={mySearchNovels} />
+          </div>
         </SearchStyled>
   </div>;
 }
 
 const SearchStyled = styled.div`
- .results{
-     margin-top:130px;
-     text-align:center;
 
-  span{
-      color:red;
-      font-size:20px;
-  }
+   
+   h5{
+     position: relative;
+     top: 8.3rem;
+     text-align:center;
+     color:${props=>props.theme.textColor};
+
+     span{
+       color:red;
+       font-size:1.5rem;
+     }
+   }
+
+ 
+ 
+
+ .results-item{
+ margin-top:150px;
+
+ 
  }
 
 `;

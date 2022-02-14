@@ -18,11 +18,11 @@ function Footer() {
 const FooterStyled = styled.div`
 
 .copyright{      
-    color:black !important;
+    color:${props=>props.theme.textColor}!important;
     font-size:1.2rem;
 }
 footer {
-  background-image: url('footer.jpg');  
+  background-image: url(${props=>props.theme.footerBack});  
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -32,11 +32,11 @@ footer {
 footer p {
   text-align: center;
   margin: 20px 0px;
-  color: black;
+  color:red;
 }
 
 footer p a {
-  color: black;
+  color:red;
   transition: all 0.5s;
 }
 

@@ -1,23 +1,19 @@
 .read {
-  background-color: rgb(223, 223, 195); 
- padding:2rem
-  
-  
+  background-color: rgb(223, 223, 195);
+  padding: 2rem;
 }
-.list-of-chapters{
-   background-color: rgb(255, 255, 255);  
-   color: black;  
-    margin-top: 5px;
+.list-of-chapters {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  margin-top: 5px;
 }
-.list-of-chapters >a{
+.list-of-chapters > a {
   color: black;
 }
 .reading {
-  background-color: rgb(233, 232, 216); 
+  background-color: rgb(233, 232, 216);
   opacity: 0.9;
   color: brown;
-
- 
 }
 .reading-title {
   position: relative;
@@ -40,17 +36,15 @@
   font-weight: 600;
 }
 
-
-.underline-img > img{
- display: block;
+.underline-img > img {
+  display: block;
   margin-left: auto;
-  margin-right: auto; 
+  margin-right: auto;
   width: 50%;
   height: 12rem;
   opacity: 0.8;
-  
 }
-.read-screen{
-background-image:url('../assets/images/back18.jpg');
+.read-screen {
+  background-image: url("../assets/images/back18.jpg");
   border-radius: 40px;
 }

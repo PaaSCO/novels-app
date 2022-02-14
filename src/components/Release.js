@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { randomCreatedDate, randomUpdatedDate } from '@mui/x-data-grid-generator';
+import {randomUpdatedDate } from '@mui/x-data-grid-generator';
+import styled from 'styled-components';
 
 const columns = [
   { field: 'genre',width:180 },
@@ -64,6 +65,9 @@ const rows = [
   },
 ];
 
+
+
+
 export default function NewRelease() {
   const [sortModel, setSortModel] = React.useState([
     {
@@ -73,13 +77,17 @@ export default function NewRelease() {
   ]);
 
   return (
-    <div style={{ height: 400, width: '95%' }}>
-      <DataGrid
+    <div style={{ height: 400, width: '95%', color: 'red' }}>
+     
+      <DataGrid  style={{color: 'orange'}}
         sortModel={sortModel}
         rows={rows}
         columns={columns}
         onSortModelChange={(model) => setSortModel(model)}
-      />
+        />
+       
     </div>
   );
+
+
 }

@@ -22,12 +22,12 @@ function Genre({genres, displayGenre, displayAll}) {
     <br /> <br /><br /><br /><br /><br />
 
            <Chip icon={<FaceIcon />} onClick={()=>displayAll()} label='All' variant="outlined" color='secondary' />
-               <b className='space'>Spa</b>       
+                  
      {
           genres.map((genre) =>(
             <span key={genre.id}  className='genre-item' >            
-                    <Chip icon={<FaceIcon />} onClick={()=>displayGenre(genre.title)} label={genre.title} variant="outlined" color='secondary' />
-                <b className='space'>Spa</b>       
+                    <Chip sx={{margin:'12px'}} icon={<FaceIcon />} onClick={()=>displayGenre(genre.title)} label={genre.title} variant="outlined" color='secondary' />
+                 
             </span>
           ))
         }
@@ -43,13 +43,29 @@ function Genre({genres, displayGenre, displayAll}) {
   </div>;
 }
 const GenreStyled = styled.div`
+.genre{
+
+ 
+
+.genre-margin{
+  margin: 20px;
+}
+}
 .genre-item{
   margin:1rem;
   padding-top:2rem;
   span{
  
   }
+  .space{
+    visibility: hidden;
 }
+}
+
+
+
+
+
 
 `;
 

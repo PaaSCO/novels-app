@@ -45,16 +45,15 @@ function a11yProps(index) {
   };
 }
 
-export default function DetailsTabs({ novels, id }) {
+export default function DetailsTabs({ novels, id , theme }) {
   
   const DetailsTabStyled = styled.div`
   .details-tab{
 
-    . list-of-chapters{
-      background-color:white;
+    div.col.list-of-chapters{
+      background-color:red !important;
 
-    hr{
-      color:red;
+    hr{   
       display:none
     }
     }
@@ -101,7 +100,7 @@ export default function DetailsTabs({ novels, id }) {
     setPageNumber(selected);
   }
 
-
+	const detailsBack = theme === 'light' ? 'white' : '#121212';
 
 
   const handleChange = (event, newValue) => {
@@ -111,12 +110,12 @@ export default function DetailsTabs({ novels, id }) {
   return (
     <div className='details-tab'>
       <DetailsTabStyled>
-    <Box sx={{ width: '100%', backgroundColor: 'white'}}>
+    <Box sx={{ width: '100%', backgroundColor: detailsBack}}>
       <Box >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"   textColor="secondary"
         indicatorColor="secondary" centered>
-          <Tab label="Chapters" {...a11yProps(0)} />
-          <Tab label="Description" {...a11yProps(1)} />          
+              <Tab label="Chapters" {...a11yProps(0)} sx={{color:'orange'}}/>
+          <Tab label="Description" {...a11yProps(1)} sx={{color:'orange'}}/>          
         </Tabs>
       </Box>
         <TabPanel value={value} index={0} sx={{ color: 'black' }}>
