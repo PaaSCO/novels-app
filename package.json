@@ -1,5 +1,5 @@
 {
-    "homepage": "http://paasco.github.io/novels-app",
+    "homepage": "http://paasco.github.io/novels-app/public/index.html",
   "name": "novelapp",
   "version": "0.1.0",
   "private": true,
