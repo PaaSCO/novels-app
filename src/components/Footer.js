@@ -7,7 +7,7 @@ function Footer() {
     <div className="container">
       <div className="row">
         <div className="col-lg-12">
-          <p className='copyright'>Copyright © 2022 eNovels. All Rights Reserved. </p>
+          <p className='copyright'>Copyright © 2022 ets All Rights Reserved. </p>
           
         </div>
       </div>

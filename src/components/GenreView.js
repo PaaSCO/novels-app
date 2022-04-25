@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { db } from '../Firebase';
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore';
 import Genre from './Genre';
 import Novel from './Novel';
 import './Genre.css';
@@ -14,11 +14,12 @@ function GenreView() {
   const [gnovels, setGnovels] = useState([]);
   const [gname, setGname] = useState('all');
   
+
  
 
   useEffect(() => {
     const genresRef = collection(db, "novel");
-    const q = query(genresRef, orderBy('title' , 'asc'));
+    const q = query(genresRef, where('type', '==' ,'ebook'));
     onSnapshot(q, (snapshot) => {      
       const genres = snapshot.docs.map((doc) => ({
         id: doc.id,

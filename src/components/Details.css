@@ -168,44 +168,6 @@ a.buy-btn:focus {
   display: inline-block;
   margin: 0 5px;
 }
-@media screen and (max-width: 850px) {
-  
-  .card-footer {
-    width: 8rem;
-    position: relative;
-    left: 9%;
-    top: 18rem;
-  }
-  .card-footer .category {
-    position: relative;
-    top: 18rem;
-  }
-  .t-details {
-    width: 100%;
-  }
-  .wsk-cp-product {
-    margin: 40px auto;
-  }
-  .wsk-cp-product .wsk-cp-img {
-    top: 40px;
-  }
-  .wsk-cp-product .wsk-cp-img img {
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  }
-  .wsk-cp-product .wsk-cp-text .category > span, .span{
-    border-color: #ddd;
-    box-shadow: none;
-    padding: 11px 28px;
-  }
-  .wsk-cp-product .wsk-cp-text .category {
-    margin-top: 0px;
-  }
-  a.buy-btn {
-    border-color: #ff9800;
-    background: #ff9800;
-    color: #fff;
-  }
-}
 
 /*        RIGHT OF DETAILS**/
 

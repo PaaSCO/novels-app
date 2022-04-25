@@ -1,5 +1,5 @@
 .read {
-  background-color: rgb(223, 223, 195);
+  background-color: white;
   padding: 2rem;
 }
 .list-of-chapters {
@@ -45,6 +45,6 @@
   opacity: 0.8;
 }
 .read-screen {
-  background-image: url("../assets/images/back18.jpg");
+ 
   border-radius: 40px;
 }

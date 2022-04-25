@@ -10,11 +10,11 @@ function Novel(props) {
     <NovelStyled >
  
   <div className="container contain" >
-  <div className="row row-cols-2 row-cols-md-3 row-cols-xl-4">
+  <div className="row row-cols-1 row-cols-md-3 row-cols-xl-3">
         {
          novels.map((novel) =>(
            <div className="col" key={novel.id}>           
-             <Link to={`/details/${novel.id}`}>  
+             <Link to={`/details/${novel.id}/${novel.genre}`}>  
                
         <div class="wsk-cp-product">
           <div class="wsk-cp-img">

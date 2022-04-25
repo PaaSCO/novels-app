@@ -14,6 +14,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { Link } from 'react-router-dom';
+import Article from './Article';
 
 
 function Home({theme}) { 
@@ -27,10 +28,16 @@ function Home({theme}) {
 
 //get all trending novels
 	const tabsColor = theme === 'light' ? 'secondary' : 'white';
-  const trending = novels.filter((novel) => novel.category === 'trending');
-  const top_rating = novels.sort((a, b) => a['rating'] - b['rating']).slice(0,4);
+  const trending = novels.filter((novel) => novel.category === 'mostread');
+//popular
+   const popular = novels.filter((novel) => novel.category === 'popular');
+  //top rating
+   const top_ebooks = novels.filter((novel) => novel.type === 'ebook');
+  const top_rating = top_ebooks.sort((a, b) => b['rating'] - a['rating']).slice(0,4);
   // get all latest novels
-    const latest = novels.filter((novel) => novel.category === 'latest');
+    const latest_article = novels.filter((novel) => novel.category === 'top_articles');
+   //top bio
+    const top_biographies = novels.filter((novel) => novel.top_bio === 'yes');
   
  
   return   <HomeStyled>
@@ -41,14 +48,14 @@ function Home({theme}) {
       <hr /><br /><br /><br /><br />   
       
      
-     <Carousel className="carousel" variant="dark">
+     <Carousel className="carousel" variant="dark" nextLabel='' prevLabel=''>
     
     
         {
           trending.map((trend) => (
        
                <Carousel.Item className='myItem' >
-             <Link to={`/details/${trend.id}`}>       
+             <Link to={`/details/${trend.id}/${trend.genre}`}>       
     <img
        className="mycarousel"
       src={trend.image}
@@ -76,7 +83,7 @@ function Home({theme}) {
     
       
           <Box sx={{ width: '100%', typography: 'body1' }}>
-                <Title title='SUGGESTION' span='novels' /><br/>
+                <Title title='Top Books' span='Books' /><br/>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example" onChange={handleChange}
@@ -92,14 +99,15 @@ function Home({theme}) {
         </Box>
           <TabPanel value="1">
              
-  
+            {/**   SECTIONS OF THE TAB FOR BOOKS */}
+            
          <Novel novels={trending} />
         </TabPanel>
           <TabPanel value="2">
              <Novel novels={top_rating} />
         </TabPanel>
           <TabPanel value="3">
-             <Novel novels={latest} />
+             <Novel novels={popular} />
         </TabPanel>
       </TabContext>
     </Box>
@@ -110,27 +118,42 @@ function Home({theme}) {
       <br /><br />
       
     
-     <Title title='latest' span='novels' />
+     <Title title='Latest Articles' span='Articles' />
     
-    <Novel novels={latest} />
+        
+       <div className="container" >
+        <div className="row row-cols-1 row-cols-md-3 row-cols-xl-3">
+          {
+            latest_article.map((novel) => (
+               <Article article={novel}/>
+
+            ))}
+        
+          </div>
+ </div>
+      
 
       <br /><br />
    
-    <div className='release'>
-<br /><br />
-        <Title title='Latest' span='Release' />
-        <br/><br/>
-       <Release  />
-    </div>
+  
    
 
 
      <br /><br />
     
-    <Title title='Action' span='novels' />
+    <Title title='Top Biographies' span='Biographies' />
     <br/>
-    <Novel novels={latest} />
+   <div className="container" >
+        <div className="row row-cols-1 row-cols-md-3 row-cols-xl-3">
+          {
+            top_biographies.map((novel) => (
+               <Article article={novel}/>
 
+            ))}
+        
+          </div>
+ </div>
+      
 </div>
   </HomeStyled>
 
@@ -144,7 +167,29 @@ const HomeStyled = styled.div`
   border-radius: 20px;
   background-color: ${props=> props.theme.homeBack};
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 80px;
+  width: 80px;
+  outline: black;
+  background-size: 80%, 80%;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-image: none;
+}
 
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: red;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: red;
+}
 
   .carousel{
    margin:3rem;

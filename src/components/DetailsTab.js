@@ -125,9 +125,9 @@ export default function DetailsTabs({ novels, id , theme }) {
             </div>
             <ReactPaginate
             pageCount={pageCount}
-            breakLabel=">>>"
-            nextLabel="next >"
-            previousLabel="< previous"
+            breakLabel="..."
+            nextLabel=">"
+            previousLabel="<"
             onPageChange={onPageChange}
             containerClassName='pagination'
             previousLinkClassName='previousLink'

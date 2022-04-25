@@ -9,8 +9,9 @@ i {
   top: 50%;
   right: 15px;
   transform: translate(-50%, -50%);
-  font-size: 26px;
-  color: #afaf69;
+  font-size: 22px;
+  /*color: #afaf69;*/
+  color: orangered;
   transition: 0.2s;
 }
 
@@ -23,15 +24,17 @@ i {
   margin: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: ${props=>props.theme.navBack};
   box-shadow: none;
+  justify-content: space-between;
+ 
+  
   .logo{
 	  a{
   color:  ${props=>props.theme.logoColor};
-  font-family: "Raleway";
-  font-size: 25px;
-  font-weight: 600;
+  font-family: "Poppins";
+  font-size: 1.2rem;
+  font-weight: 800;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.47, 0, 0.745, 0.715);  
   &:hover {
@@ -39,6 +42,10 @@ i {
  font-size: 27px;
   }
 	  }
+    img{
+      width:20%;
+      border:1px solid red;
+    }
   }
 
   .nav-links{
@@ -48,9 +55,10 @@ i {
 		  a{
 			  color: ${props=>props.theme.logoColor};
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: .96rem;
+  font-weight: 600;
   padding: 9px 15px;
+  margin-left: 0px !important; 
   font-family: "Raleway";
   letter-spacing: .05rem;
   transition: all 0.3s ease;
@@ -67,12 +75,20 @@ i {
   }
 }
 
+.right_nav{
+ ul{
+   li{
+      display: inline;
+      margin-left:1.6rem ;
+   }
+ }
+}
 
   position: fixed;
   z-index: 99;
   width: 100%;
   background: ${props=>props.theme.navBack};
-   box-shadow: 0 19px 38px rgba(155, 154, 154, 0.3), 0 15px 12px rgba(226, 216, 216, 0.22);
+   box-shadow: 0 1px 1px rgba(155, 154, 154, 0.3), 0 15px 12px rgba(226, 216, 216, 0.22);
 
 
 .header_link{
@@ -88,8 +104,8 @@ i {
 
 .header_search
 {
-	margin-right: 15px;
-	margin-left: 5px;
+	margin-left: 30% !important;
+
 }
 .header_search_form
 {
@@ -97,9 +113,9 @@ i {
 }
 .search_input
 {
-	width: 260px;
+	width: 360px;
 	height: 39px;
-	border: solid 1px #4a4a4a;
+	border: solid 0.5px #4a4a4a;
 	border-radius: 20px;
 	outline: none;
 	text-align: center;
@@ -153,7 +169,7 @@ i {
 {
 	position: relative;
 	top: 22px;
-	left:-13%;
+	left:13%;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);

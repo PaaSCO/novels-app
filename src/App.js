@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import GenreView from './components/GenreView';
 import NovelDetails from './components/NovelDetails';
+import SearchIcon from '@mui/icons-material/Search';
 import Read from './components/Read';
 import Header from './components/Header';
 import SearchNovel from './components/SearchNovel';
@@ -16,19 +17,24 @@ import {Link, NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 import close from '../src/assets/images/close_big.png';
 import open_menu from '../src/assets/images/menu_yellow.png';
+import logo from '../src/assets/images/Neat_logo.jpg';
 import search_img from '../src/assets/images/search.png'
 import { CgSun } from 'react-icons/cg';
 import {HiMoon} from 'react-icons/hi'
 import NavStyled from './components/Nav';
+import Articles from './components/Articles';
+import DisplayArticle from './components/DisplayArticle';
+import About from './components/About';
  
 
 const LightTheme = {
   textColor: 'black',
   backgroundColor: 'white',
   navBack: 'rgb(255, 244, 244)',
-  logoColor: '#a30474',
+  logoColor:'black',
   cardBack: 'white',
   homeBack: '#f0ede4',
+  articleBack:'white',
   cardShadow: '0 1px 3px rgba(190, 47, 47, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
   footerBack: 'footer.jpg',
   categoryBack: '#212121',
@@ -43,6 +49,7 @@ const DarkTheme = {
   logoColor: 'white',
   cardBack: '#000000',
   homeBack: '#121212',
+  articleBack:'#121212',
   cardShadow: ' 0 19px 38px rgba(155, 154, 154, 0.3), 0 15px 12px rgba(226, 216, 216, 0.22)',
   footerBack: 'footer3.jpg',
   categoryBack: '#212121',
@@ -56,8 +63,10 @@ const themes = {
 
 const Toggle = styled.button`
 cursor: pointer;
-height: 30px;
-width: 30px;
+height: 20px;
+width: 20px;
+position:relative ;
+top:23.4px !important;
 
 border-radius:50%;
 
@@ -71,14 +80,21 @@ transition: all .5s ease-in-out;
 .icon{
 
 	position: relative;
-	bottom: 20.5px;
+	bottom: 28.5px;
 }
 .toggle{
 	position: relative;
 	bottom: 40px;
 	color: ${props=>props.theme.logoColor} !important;
-	width: 100px;
-	margin-left: -2rem;
+	width: 10px;
+	margin-left: -2rem !important;
+  display:none;
+
+   &:hover{
+    display:block ;
+  }
+
+
 }
 
 
@@ -100,43 +116,52 @@ function App() {
 		}
 	}
 
-  const icon = theme === 'light' ? <HiMoon size={25} /> : <CgSun size={25} />;
+  const icon = theme === 'light' ? <HiMoon size={20} /> : <CgSun size={20} />;
   
   return (
     <ThemeProvider theme={themes[theme]}>
       <AppStyled>
     <div className="App">
      
-        <NavStyled>
+          <NavStyled>
+          
      <div className="wrapper">
-            <div className="logo"><a href="/">eNovels</a></div> 
-           <div className="header_search">
-					<form action="#"  id="header_search_form">
-						<input type="text" className="search_input" onChange={(e)=> setSearch(e.target.value)} placeholder="Search Novel" required="required"/>
-		 <Link to={`/search/${search}`}> <button className="header_search_button"><img src={search_img} alt=""/></button></Link>
-					</form>
-					</div>
+            <div className="logo"><a href="/">Eat the Scroll</a></div> 
+        
+				  
 				
-					<Toggle onClick={changeTheme} >							
-						<span className='icon'>{icon}</span>	
-						<p className='toggle'>{mode}</p>
-				</Toggle>
 
        <input className='radio' type="radio" name="slider" id="menu-btn"/>
             <input className='radio' type="radio" name="slider" id="close-btn" />
        <ul className="nav-links">
         <label htmlFor="close-btn" className="btn close-btn"><i className="fas fa-times"><img src={close} /></i></label>
-              <li><NavLink className='link' to="/" activeclass="active">
-                            Home
-                        </NavLink></li>      
-        <li> <NavLink className='link' to="/genre"  activeclass="active">
-                            Genre
+             
+        <li> <NavLink className='link' to="/ebooks"  activeclass="active">
+                            Ebooks
               </NavLink></li>
         
-                <li> <NavLink className='link' to="/genre"  activeclass="active">
-                            Login
-              </NavLink></li>      
-      </ul>
+                <li> <NavLink className='link' to="/articles"  activeclass="active">
+                            Articles
+                </NavLink></li> 
+              
+                 <li><NavLink className='link' to="/about" activeclass="active">
+                            About
+                </NavLink></li>    
+                
+                
+                
+              </ul>
+              <div className='right_nav'>
+                <ul>
+                 <Link to={`/search/allresourceseatthescroll`}>   <li>  <SearchIcon color='warning' /></li></Link>
+                  <li> 
+              	<Toggle onClick={changeTheme} >							
+						<span className='icon'>{icon}</span>	
+                	<p className='toggle' >{mode}</p>
+                </Toggle></li>
+                </ul>
+            
+                </div>
       <label htmlFor="menu-btn" className="btn menu-btn"><i><img src={open_menu} /></i></label>
       </div>
    
@@ -153,12 +178,14 @@ function App() {
             
             
        
-            <Route path="/genre" element={<GenreView theme={theme} setTheme={setTheme}/>} />            
-            <Route path="details/:id" element={<NovelDetails theme={theme}  />} />
+                <Route path="/ebooks" element={<GenreView theme={theme} setTheme={setTheme} />} />    
+                <Route path="/articles" element={<Articles theme={theme}/>} />        
+                <Route path="details/:id/:genre" element={<NovelDetails theme={theme} />} />
+                <Route path="display_articles/:id/:genre" element={<DisplayArticle theme={theme}  />} />
             <Route path="read/:id/:id2/:pageNum" element={<Read />} />
             <Route path="search/:value" element={<SearchNovel theme={theme} />} />
             
-
+              <Route path="/about" element={<About theme={theme} setTheme={setTheme} />} />    
               
           
 

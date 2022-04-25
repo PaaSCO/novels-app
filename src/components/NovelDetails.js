@@ -7,20 +7,27 @@ import './Details.css';
 import DetailsTab from './DetailsTab';
 import Novel from './Novel';
 import Title from './Title';
+import { useState } from 'react';
 
 
 function NovelDetails({theme}) {
   
     const { novels } = useFetchNovels('novel');
-    const { id, id2 } = useParams();
+    const { id, id2,genre } = useParams();
+      const [novelTitle, setNovelTitle] = useState([]);
    
+    
+
     
 
 
     //get novel with this id
     const details = novels.filter((novel) => novel.id === `${id}`);
+
+   
     //get all trending novels
-  const recommended = novels.filter((novel) => novel.category === 'latest');
+ const recommendedBooks = novels.filter((novel) => novel.type == 'ebook' );
+  const recommended = recommendedBooks.filter((novel) => novel.genre === `${genre}` && novel.id === `${id}`).slice(0,3);
    
 
     return    <DetailsStyled>
@@ -39,7 +46,7 @@ function NovelDetails({theme}) {
 
              
      
-        <Title title='RECOMMENDED' span='Novels'/>
+        <Title title='Recommended Books' span='BOOKS'/>
            
             <Novel novels={recommended} />
 
@@ -61,5 +68,7 @@ const DetailsStyled = styled.div`
           background-color: #ffffff !important;
      }
 }
+
+
 `;
 export default NovelDetails;

@@ -54,8 +54,8 @@ const{pageNum} =useParams()
  <ReactPaginate
                   pageCount={pageCount}
                   breakLabel="..."
-                  nextLabel="next >"
-                  previousLabel="< previous"
+                  nextLabel=">"
+                  previousLabel="<"
                   onPageChange={onPageChange}
                   containerClassName='pagination'
                   previousLinkClassName='previousLink'
@@ -73,7 +73,7 @@ const{pageNum} =useParams()
 }
 const NovelStyled = styled.div`
 background-image: url('footer.jpg');  
-background-image:url('../assets/images/back2.jpg');
+background-image:url('../assets/images/back7.jpg');
 padding:0;
 margin:0;
 border-radius:30px;
