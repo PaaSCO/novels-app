@@ -73,7 +73,7 @@ const{pageNum} =useParams()
 }
 const NovelStyled = styled.div`
 background-image: url('footer.jpg');  
-background-image:url('../assets/images/back7.jpg');
+background-image:url('../assets/images/readBack1.jpg');
 padding:0;
 margin:0;
 border-radius:30px;

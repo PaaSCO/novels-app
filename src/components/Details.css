@@ -182,7 +182,7 @@ a.buy-btn:focus {
 }
 .chapters,
 .desc {
-  color: black;
+  color:darkred;
 }
 
 /* PAGINATION */

@@ -6,8 +6,9 @@ import Novel from './Novel';
 import './Genre.css';
 import useFetchNovels from './useFetchNovels';
 import styled from 'styled-components';
+import ReactPaginate from 'react-paginate';
 
-function GenreView() {
+function GenreView({theme}) {
 
   const [genres, setGenres] = useState([]);
    const [uniquegenres2, setUniqueGenres2] = useState([]);
@@ -71,14 +72,29 @@ const uniquegenres = uniq(genres, 'genre');
     setGname(agenre);    
   }
 
- 
+
+  //pignation
+  //const{pageNum} =useParams()
+  const [pageNumeber, setPageNumber] = useState(0);  
+  const articlesPerPage = 9;
+  const pagesVisited = pageNumeber * articlesPerPage;
+  const pageCount = Math.ceil(gnovels.length / articlesPerPage);
+
+  const displayebooks = gnovels.slice(pagesVisited, pagesVisited + articlesPerPage);
+          
+        
+  
+    
+    const onPageChange = ({selected}) => {
+    setPageNumber(selected);
+  }
  
   return  <GenreViewStyled>
   <div className='genreview'>
    
     <h5>Genres</h5>
         
-    <Genre genres={uniquegenres2}  displayGenre={displayGenre} displayAll={displayAll} />
+      <Genre genres={uniquegenres2} displayGenre={displayGenre} displayAll={displayAll} theme={theme} />
 
 
 
@@ -86,9 +102,23 @@ const uniquegenres = uniq(genres, 'genre');
     
   
      <h5><span>{gnovels.length}</span> result(s) for {gname}</h5>
-        
-    <Novel novels={gnovels}/>    
-  </div>;
+      {
+         <Novel novels={displayebooks}/> 
+         }
+   
+    </div>;
+    <br />
+     <ReactPaginate
+                  pageCount={pageCount}
+                  breakLabel="..."
+                  nextLabel=">"
+                  previousLabel="<"
+                  onPageChange={onPageChange}
+                  containerClassName='pagination'
+                  previousLinkClassName='previousLink'
+                  activeClassName='activePage'
+                
+              />
    </GenreViewStyled>   
 }
 
@@ -97,11 +127,13 @@ const GenreViewStyled = styled.div`
    h5{
    
      text-align:center;
-     color:${props=>props.theme.textColor};
+     color:${props => props.theme.textColor};
+     opacity: 0.8;
 
      span{
        color:red;
-       font-size:1.5rem;
+       font-size:1.4rem;
+       opacity:0.8 ;
      }
    }
 

@@ -2,12 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useFetchNovels from './useFetchNovels';
+import logo from '../assets/images/eat40.jpg';
+import { useState } from 'react';
 
 
 function Article({article}) {
         // Retrieving all Novels
     const { novels } = useFetchNovels();
-    const trending = novels.filter((novel) => novel.category === 'top_articles');
+  const trending = novels.filter((novel) => novel.category === 'top_articles');
+  
   return (
       <ArticleStyled>
           
@@ -16,19 +19,19 @@ function Article({article}) {
        
           {/**  Create the card here */}
          
-  <div class="card">
-    <div class="card__header">
-      <img src={article.image} alt="card__image" class="card__image" width="600"/>
+  <div className="card">
+    <div className="card__header">
+      <img src={article.image} alt="card__image" className="card__image" width="600"/>
     </div>
-    <div class="card__body">
-              <span class="tag tag-blue">{article.genre}</span>
+    <div className="card__body">
+              <span className="tag tag-blue">{article.genre}</span>
               <h4>{ article.title}</h4>
-              <p>{ article.content}</p>
+              <p>{ article.content[0]}</p>
     </div>
-    <div class="card__footer">
-      <div class="user">
-        <img src="https://i.pravatar.cc/40?img=1" alt="user__image" class="user__image"/>
-        <div class="user__info">
+    <div className="card__footer">
+      <div className="user">
+        <img className='author user__image' src={logo} alt="user__image" />
+        <div className="user__info">
                   <h5>{article.author }</h5>
           <small>{article.date}</small>
         </div>

@@ -113,31 +113,14 @@ export default function DetailsTabs({ novels, id , theme }) {
     <Box sx={{ width: '100%', backgroundColor: detailsBack}}>
       <Box >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"   textColor="secondary"
-        indicatorColor="secondary" centered>
-              <Tab label="Chapters" {...a11yProps(0)} sx={{color:'orange'}}/>
-          <Tab label="Description" {...a11yProps(1)} sx={{color:'orange'}}/>          
+              indicatorColor="secondary" centered>    
+              <Tab label="Description" {...a11yProps(1)} sx={{color:'orange'}}/>        
+           
+              
         </Tabs>
       </Box>
-        <TabPanel value={value} index={0} sx={{ color: 'black' }}>
-          <div className='chapters'>
-             <div className="row row-cols-2 row-cols-md-3 row-cols-xl-3">
-              {displayChapters}
-            </div>
-            <ReactPaginate
-            pageCount={pageCount}
-            breakLabel="..."
-            nextLabel=">"
-            previousLabel="<"
-            onPageChange={onPageChange}
-            containerClassName='pagination'
-            previousLinkClassName='previousLink'
-            activeClassName='activePage'
-              />
-          </div>
-           
-        
-      </TabPanel>
-        <TabPanel value={value} index={1}>
+   
+        <TabPanel value={value} index={0}>
           <div className='desc'>
             {
               novels.map((novel) => (
@@ -148,7 +131,9 @@ export default function DetailsTabs({ novels, id , theme }) {
              } 
           </div>
        
-      </TabPanel>
+          </TabPanel>
+          
+         
      
       </Box>
       </DetailsTabStyled>

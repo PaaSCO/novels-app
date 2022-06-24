@@ -7,6 +7,7 @@ import ReactPaginate from 'react-paginate';
 import Article from './Article';
 
 
+
 function Articles({theme}) {
       // Retrieving all Novels
   const { novels } = useFetchNovels();
@@ -15,7 +16,8 @@ function Articles({theme}) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };  
-const trending = novels.filter((novel) => novel.category === 'top_articles');
+  const trending = novels.filter((novel) => novel.type === 'article');
+  const trending2 = novels.filter((novel) => novel.category === 'top_articles');
 
   //pignation
   //const{pageNum} =useParams()
@@ -44,7 +46,7 @@ const trending = novels.filter((novel) => novel.category === 'top_articles');
     
     
         {
-          trending.map((trend) => (
+          trending2.map((trend) => (
        
                <Carousel.Item className='myItem' >
              <Link to={`/display_articles/${trend.id}/${trend.genre}`}>       

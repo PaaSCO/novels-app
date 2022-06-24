@@ -1,5 +1,6 @@
 .read {
-  background-color: white;
+  
+  background-image:url('../assets/images/readBack2.jpg');
   padding: 2rem;
 }
 .list-of-chapters {
@@ -11,7 +12,7 @@
   color: black;
 }
 .reading {
-  background-color: rgb(233, 232, 216);
+  background-color: rgb(255, 255, 255);
   opacity: 0.9;
   color: brown;
 }
@@ -28,6 +29,9 @@
   position: relative;
   top: 3rem;
   bottom: 1.5rem;
+padding-left: 5rem;
+padding-right: 5rem;
+padding-bottom: 5rem;
   color: rgb(0, 0, 0) !important;
   font-size: 22px !important;
   letter-spacing: 0.5px;

@@ -2,6 +2,8 @@ import React from 'react';
 import Rating from '@mui/material/Rating';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import DownloadIcon from '@mui/icons-material/Download';
 import './Home.css';
 
 function Novel(props) {
@@ -20,10 +22,8 @@ function Novel(props) {
           <div class="wsk-cp-img">
             <img src={novel.image} alt="Product" class="img-responsive" />
           </div>
-          <div class="wsk-cp-text">
-            <div class="category">
-              <span>Read</span>
-            </div>
+          <div class="wsk-cp-text"><br/>
+            
             <div class="title-product">
             <h3>{ novel.title}</h3>
                    </div>
@@ -34,20 +34,22 @@ function Novel(props) {
                   <div class="description-prod">
                      <h6>{novel.genre}</h6>
                    </div>
-                    <div class="description-prod">
-                     <h6>{novel.totalchapters} chapter(s)</h6>
-                   </div>
-                   {/*
-            <div class="card-footer">
-              <div class="wcf-left"><span class="price">{novel.genre}</span></div>
-              <div class="wcf-right"><a href="#" class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
-                   </div>*/}
+                  
+               
+<br/>
           </div>
          
           </div>              
                    
            
-         </Link>
+             </Link>
+             <div className='download'>
+              <a href={novel.link} download>
+                  <Button variant="outlined" color='error' startIcon={<DownloadIcon />}>
+        Download
+      </Button>
+               </a>
+               </div>
            </div>
           ))
         }
@@ -67,9 +69,9 @@ h4,h5,h6{
 
 .contain {
   .wsk-cp-product {
-  height: 90%;
+  height: 80%;
   background: ${props=>props.theme.cardBack};
-  padding: 15px;
+  padding: 30px;
   border-radius: 6px;
   box-shadow:${props=>props.theme.cardShadow};
   position: relative;
@@ -95,6 +97,7 @@ h4,h5,h6{
   transition: all 0.2s ease-in-out;
   border-radius: 6px;
   }
+  
 }
 
 
@@ -115,9 +118,10 @@ top:-45px;
 
   .title-product{
     h3 {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 500;
   margin: 15px auto;
+  opacity:o.9 ;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -132,6 +136,7 @@ top:-45px;
    margin: 0;
   font-size: medium;
   color: ${props => props.theme.textColor} ;
+  opacity:0.8;
   }
 }
 }
@@ -141,18 +146,12 @@ top:-45px;
 
 }
 
-.category>span{
- padding: 12px 30px;
-  border: 1px solid #313131;
-  background: #212121;
-  color: #fff;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  border-radius: 27px;
-  transition: all 0.05s ease-in-out;
-}
+
 }
 
 
+
+margin-bottom:6rem ;
 
 `;
 

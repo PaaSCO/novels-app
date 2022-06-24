@@ -32,8 +32,9 @@ i {
   .logo{
 	  a{
   color:  ${props=>props.theme.logoColor};
-  font-family: "Poppins";
-  font-size: 1.2rem;
+ font-family:'Tangerine' ;
+  font-size: 2.4rem;
+  opacity:0.9 ;
   font-weight: 800;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.47, 0, 0.745, 0.715);  
@@ -55,6 +56,7 @@ i {
 		  a{
 			  color: ${props=>props.theme.logoColor};
   text-decoration: none;
+  opacity:0.9 ;
   font-size: .96rem;
   font-weight: 600;
   padding: 9px 15px;
@@ -185,6 +187,11 @@ i {
 }
 @media screen and (max-width: 970px) {
 .wrapper{
+
+  .logo{
+    font-size:2.2rem ;
+    opacity: 0.9;
+  }
 	.nav-links{
     position: fixed;
     height: 100vh;

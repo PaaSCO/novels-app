@@ -44,7 +44,7 @@ const TitleStyled = styled.div`
         border-radius: 50px;
     }
     .theTitle{
-font-size: 1.5rem;
+font-size: 1.1rem;
      color: #e60a71;
      font-family:'Arvo';
     }
@@ -52,7 +52,7 @@ font-size: 1.5rem;
         position: absolute;
         top: 15%;
         left: 0%;
-        font-size: 5rem;
+        font-size: 3rem;
         opacity: 0.1;
         color: rgb(0, 13, 0);
     }

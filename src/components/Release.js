@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import {randomUpdatedDate } from '@mui/x-data-grid-generator';
-import styled from 'styled-components';
+
 
 const columns = [
   { field: 'genre',width:180 },

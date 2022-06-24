@@ -109,6 +109,10 @@ function SearchNovel() {
 
 const SearchStyled = styled.div`
 
+.sort{
+	background-color:white ;
+	max-width:130px ;
+}
    
    h6{
      position: relative;

@@ -27,7 +27,7 @@ function NovelDetails({theme}) {
    
     //get all trending novels
  const recommendedBooks = novels.filter((novel) => novel.type == 'ebook' );
-  const recommended = recommendedBooks.filter((novel) => novel.genre === `${genre}` && novel.id === `${id}`).slice(0,3);
+  const recommended = recommendedBooks.filter((novel) => novel.genre === `${genre}` && novel.id != `${id}`).slice(0,3);
    
 
     return    <DetailsStyled>

@@ -2,12 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import './Home.css'
 import Novel from './Novel';
-import Release from './Release';
 import Title from './Title';
 import useFetchNovels from './useFetchNovels';
 import 'bootstrap/dist/css/bootstrap.css';
 import Rating from '@mui/material/Rating';
-import { Carousel, Col, Container, Row, Button } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -15,6 +14,8 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { Link } from 'react-router-dom';
 import Article from './Article';
+import DownloadIcon from '@mui/icons-material/Download';
+import Button1 from '@mui/material/Button';
 
 
 function Home({theme}) { 
@@ -28,16 +29,17 @@ function Home({theme}) {
 
 //get all trending novels
 	const tabsColor = theme === 'light' ? 'secondary' : 'white';
-  const trending = novels.filter((novel) => novel.category === 'mostread');
+  const trending = novels.filter((novel) => novel.category === 'mostread').slice(0,3);
 //popular
-   const popular = novels.filter((novel) => novel.category === 'popular');
+   const popular = novels.filter((novel) => novel.category === 'popular').slice(0,3);
   //top rating
    const top_ebooks = novels.filter((novel) => novel.type === 'ebook');
-  const top_rating = top_ebooks.sort((a, b) => b['rating'] - a['rating']).slice(0,4);
+  const top_rating = top_ebooks.sort((a, b) => b['rating'] - a['rating']).slice(0,3);
   // get all latest novels
-    const latest_article = novels.filter((novel) => novel.category === 'top_articles');
+  const articles = novels.filter((novel) => novel.type === 'article');
+   const latest_articles = articles.sort((a, b) => b['latest'] - a['latest']).slice(0,3);
    //top bio
-    const top_biographies = novels.filter((novel) => novel.top_bio === 'yes');
+    const top_biographies = novels.filter((novel) => novel.top_bio === 'yes').slice(0,3);
   
  
   return   <HomeStyled>
@@ -63,14 +65,18 @@ function Home({theme}) {
     />
 
               <Carousel.Caption className="myitems">
-                
+                <br/>
                  <span><Rating name="read-only" value={trend.rating} readOnly /></span> <span>{trend.rating}</span>
-                  <h4 className='title'>{trend.title }</h4>
+                  <h4 className='title'>{trend.title }</h4><br/>
                 <h6 className='desc'>{trend.description} </h6>
                       <br/><br/><br/>
-                      <div className="category">
-                      <span>Read</span>
-                     </div>
+                       <div className='download'>
+              <a href={trend.link} download>
+                  <Button1 variant="outlined" color='error' startIcon={<DownloadIcon />}>
+        Download
+      </Button1>
+               </a>
+               </div>
      
                 </Carousel.Caption>
               </Link>
@@ -86,11 +92,9 @@ function Home({theme}) {
                 <Title title='Top Books' span='Books' /><br/>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <TabList onChange={handleChange} aria-label="lab API tabs example" onChange={handleChange}
+            <TabList onChange={handleChange} aria-label="lab API tabs example" 
   textColor= 'secondary'
-  indicatorColor='secondary'
-  aria-label="secondary tabs example"
->
+  indicatorColor='secondary'>
            
               <Tab label="Trending" value="1" sx={{color:tabsColor}}/>
             <Tab label="Top rating" value="2" sx={{color:tabsColor}} />
@@ -124,7 +128,7 @@ function Home({theme}) {
        <div className="container" >
         <div className="row row-cols-1 row-cols-md-3 row-cols-xl-3">
           {
-            latest_article.map((novel) => (
+            latest_articles.map((novel) => (
                <Article article={novel}/>
 
             ))}
@@ -198,7 +202,9 @@ const HomeStyled = styled.div`
 
    .myItem{
      img{
-       max-height:30rem;      
+       max-height:25rem;   
+       align-items   :center ;
+       width:fit-content ;
 
      }
    }

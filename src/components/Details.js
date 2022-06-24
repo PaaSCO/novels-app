@@ -1,8 +1,9 @@
 import React from 'react';
-import Rating from '@mui/material/Rating';
+import Button from '@mui/material/Button';
 import styled from 'styled-components';
 //import './Details.css';
 import { Link } from 'react-router-dom';
+import DownloadIcon from '@mui/icons-material/Download';
  import { useEffect, useState } from "react";
 import { db } from '../Firebase';
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
@@ -48,37 +49,39 @@ function Details({ novels, id, id2 }) {
                
                  <div className='col details'>
                  
-                         <div class="title-product t-details">
+                         <div className="title-product t-details">
                              <h4> {novel.title}</h4>
                          </div>
                    
                  
-<table>  
-  <tr>  
-    <td>Author</td>
-                    <td>{novel.author}</td>
-                   
-  </tr>
-  <tr>  
-                     <td>Genre</td>
-                     <td>{novel.genre}</td>
-                     
-                   </tr>
-                   <tr>
-                     <td>Rating</td>
-                     <td>{novel.rating}</td>
-                   </tr>
-</table>
-                 
+                          <table>  
+                            <tr>  
+                              <td>Author</td>
+                                              <td>{novel.author}</td>
+                                            
+                            </tr>
+                            <tr>  
+                                              <td>Genre</td>
+                                              <td>{novel.genre}</td>
+                                              
+                                            </tr>
+                                            <tr>
+                                              <td>Rating</td>
+                                              <td>{novel.rating}</td>
+                                            </tr>
+                          </table>
+                                          
 
-                                                       
-                                    
-                           <div className="category">
-                                 <Link to={`/read/${id}/${id2}/1`}>  
-                         <span className='span'>Start</span>
-                         </Link>
-                         </div>                            
-                         
+                                                  <br/><br/>                               
+                                                      
+                                      <div className='download'>
+                                <a href={novel.link} download>
+                                        <Button variant="outlined" color='error' startIcon={<DownloadIcon />}>
+                              Download
+                            </Button>
+                                              </a>
+                              </div>                       
+                            
                      
 
                    </div>
@@ -98,7 +101,7 @@ function Details({ novels, id, id2 }) {
 }
 const NovelStyled = styled.div`
 background-color:${props => props.theme.homeBack};
-margin-bottom:10rem ;
+margin-bottom:0rem ;
 
 
 .image {
@@ -111,6 +114,9 @@ margin-bottom:10rem ;
   img{
     width:80% ;
   }
+}
+.t-details{
+    color: ${props=>props.theme.textColor};
 }
 
 table {
